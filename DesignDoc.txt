@@ -1,0 +1,17 @@
+Problem definition:
+  - An efficient lift system (Minimum wait time for users)
+  - Any number of lifts can be present
+
+API contract:
+  - LiftManager-summon_lift/2: Summon the lift specifying if we want to go up or down
+  - Lift-go_to/1: Specify which floor to travel to
+  - Lift-cancel_command/1: Specify command to cancel
+
+Lift states:
+  - Stationery
+  - Going to
+  - At
+
+Classes:
+  - Lift
+  - LiftManager
