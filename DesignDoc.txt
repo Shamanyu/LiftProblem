@@ -3,7 +3,7 @@ Problem definition:
   - Any number of lifts can be present
 
 API contract:
-  - LiftManager-summon_lift/2: Summon the lift specifying if we want to go up or down
+  - LiftManager-summon_lift/2: Summon the lift specifying if we want to go up or down and which floor we are on
   - Lift-go_to/1: Specify which floor to travel to
   - Lift-cancel_command/1: Specify command to cancel
 
