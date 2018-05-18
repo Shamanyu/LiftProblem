@@ -1,4 +1,5 @@
 from collections import OrderedDict
+import random
 
 class lift_manager(object):
 
@@ -41,6 +42,9 @@ class lift_manager(object):
     lift_to_pass_instruction = __get_best_lift(instruction_to_process)
     self.lift_dict[lift_to_pass_instruction].add_instruction(instruction_to_process)
     self.lift_to_instruction_map[lift_to_pass_instruction].append(instruction_to_process)
+
+  def __get_best_lift(self, instruction):
+    return random.choice(self.lift_dict.keys())
 
 
 from nose.tools import assert_equals, assert_raises
