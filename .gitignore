@@ -1,1 +1,3 @@
 LiftService/venv3.4
+lift_manager/venv
+*.pyc
