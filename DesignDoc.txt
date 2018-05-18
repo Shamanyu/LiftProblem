@@ -23,6 +23,8 @@ Classes:
     - State
       - id: Unique identifier
       - instruction list: Sorted lists of orthogonal instructions the lift is going
+      - up_travel_time: Time taken to travel one storey in the upwards direction
+      - down_travel_time: Time taken to travel one storey in the downwards direction
       to follow
       - add instruction: Add an instruction
       - remove instruction: Remove an instruction
