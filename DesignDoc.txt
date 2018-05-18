@@ -37,9 +37,7 @@ Classes:
       - sub instruction list: Sorted list of instructions to follow to serve
         this instruction (Note: This helps build instructions recursively.
         Moreover, this will be empty if an instruction has no sub instructions).
-    - Method
-      - add instruction: Add an instruction
-      - remove instruction: Remove an instruction
+    - Methods
 
 API contract:
 
