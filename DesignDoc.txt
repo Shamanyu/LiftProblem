@@ -9,19 +9,34 @@ Problem statement:
 Classes:
 
   - LiftManager (Singleton class)
-    - id: Unique identifier
+    - State
+      - id: Unique identifier
+      - lift list: List of lift objects to manage
+      - instruction queue: Queue of instructions to process
+    - Methods
+      - add lift: Add a lift
+      - remove lift: Remove a lift
+      - add instruction: Add an instruction
+      - remove instruction: Remove an instruction
 
   - Lift
-    - id: Unique identifier
-    - instructionList: Sorted lists of orthogonal instructions the lift is going
+    - State
+      - id: Unique identifier
+      - instruction list: Sorted lists of orthogonal instructions the lift is going
       to follow
+      - add instruction: Add an instruction
+      - remove instruction: Remove an instruction
 
   - Instruction
-    - id: Unique identifier
-    - name: Human readable name for an instruction
-    - subInstructionList: Sorted list of instructions to follow to serve
-      this instruction (Note: This helps build instructions recursively.
-      Moreover, this will be empty if an instruction has no sub instructions).
+    - State
+      - id: Unique identifier
+      - name: Human readable name for an instruction
+      - sub instruction list: Sorted list of instructions to follow to serve
+        this instruction (Note: This helps build instructions recursively.
+        Moreover, this will be empty if an instruction has no sub instructions).
+    - Method
+      - add instruction: Add an instruction
+      - remove instruction: Remove an instruction
 
 API contract:
 
