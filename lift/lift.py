@@ -2,10 +2,11 @@ from collections import OrderedDict
 
 class lift(object):
 
-  def __init__(self, up_travel_time=10, down_travel_time=10):
-    self.current_instruction_id = 0
+  def __init__(self, name, up_travel_time=10, down_travel_time=10):
+    self.name = name
     self.up_travel_time = up_travel_time
     self.down_travel_time = down_travel_time
+    self.current_instruction_id = 0
     self.instruction_dict = OrderedDict()
 
   def add_instruction(self, instruction):
@@ -34,7 +35,7 @@ from nose.tools import assert_equals, assert_raises
 class test_lift(object):
 
   def test_lift_instance(self):
-    lift_instance = lift()
+    lift_instance = lift('lift-1')
 
     print(lift_instance)
 
