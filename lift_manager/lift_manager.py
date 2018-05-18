@@ -38,13 +38,22 @@ class lift_manager(object):
   def process_instructions(self):
     if len(self.instruction_dict) == 0:
       pass
-    instruction_to_process = self.instruction_dict.pop(last=False)
-    lift_to_pass_instruction = __get_best_lift(instruction_to_process)
-    self.lift_dict[lift_to_pass_instruction].add_instruction(instruction_to_process)
-    self.lift_to_instruction_map[lift_to_pass_instruction].append(instruction_to_process)
+    instruction_to_process, _ = self.instruction_dict.popitem(last=False)
+    lift_to_pass_instruction = self.__get_best_lift(instruction_to_process)
+    # Send instruction to chosen lift
+    # self.lift_dict[lift_to_pass_instruction].add_instruction(instruction_to_process)
+    # self.lift_to_instruction_map[lift_to_pass_instruction].append(instruction_to_process)
 
   def __get_best_lift(self, instruction):
-    return random.choice(self.lift_dict.keys())
+    return random.choice(list(self.lift_dict.keys()))
+
+  def __str__(self):
+    return "\nLIFT MANAGER STATE\n" + \
+      "Current lift ID: " + str(self.current_lift_id) + "\n" + \
+      "Lift dict: " + str(self.lift_dict) + "\n" + \
+      "Current instruction ID: " + str(self.current_instruction_id) + "\n" + \
+      "Instruction dict: " + str(self.instruction_dict) + "\n" + \
+      "Lift to instruction map: " + str(self.lift_to_instruction_map)
 
 
 from nose.tools import assert_equals, assert_raises
@@ -57,6 +66,41 @@ class test_lift_manager(object):
 
     # Assert that 'lift_manager' is a singleton class
     assert_equals(lift_manager_instance, lift_manager_instance_clone)
+
+    print (lift_manager_instance)
+
+    lift_manager_instance.add_lift('lift-1')
+    print (lift_manager_instance)
+
+    lift_manager_instance.add_lift('lift-2')
+    print (lift_manager_instance)
+
+    lift_manager_instance.add_instruction('inst-1')
+    print (lift_manager_instance)
+
+    lift_manager_instance.add_instruction('inst-2')
+    print (lift_manager_instance)
+
+    lift_manager_instance.process_instructions()
+    print (lift_manager_instance)
+
+    lift_manager_instance.add_lift('lift-3')
+    print (lift_manager_instance)
+
+    lift_manager_instance.remove_lift(0)
+    print (lift_manager_instance)
+
+    lift_manager_instance.process_instructions()
+    print (lift_manager_instance)
+
+    lift_manager_instance.add_instruction('inst-3')
+    print (lift_manager_instance)
+
+    lift_manager_instance.add_instruction('inst-4')
+    print (lift_manager_instance)
+
+    lift_manager_instance.remove_instruction(2)
+    print (lift_manager_instance)
 
     print ("All test cases passed!")
 
