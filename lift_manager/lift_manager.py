@@ -37,7 +37,7 @@ class lift_manager(object):
 
   def process_instructions(self):
     if len(self.instruction_dict) == 0:
-      pass
+      return
     instruction_to_process, _ = self.instruction_dict.popitem(last=False)
     lift_to_pass_instruction = self.__get_best_lift(instruction_to_process)
     # Send instruction to chosen lift
@@ -100,6 +100,18 @@ class test_lift_manager(object):
     print (lift_manager_instance)
 
     lift_manager_instance.remove_instruction(2)
+    print (lift_manager_instance)
+
+    lift_manager_instance.process_instructions()
+    print (lift_manager_instance)
+
+    lift_manager_instance.process_instructions()
+    print (lift_manager_instance)
+
+    lift_manager_instance.process_instructions()
+    print (lift_manager_instance)
+
+    lift_manager_instance.process_instructions()
     print (lift_manager_instance)
 
     print ("All test cases passed!")
