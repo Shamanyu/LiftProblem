@@ -1,17 +1,42 @@
-Problem definition:
-  - An efficient lift system (Minimum wait time for users)
-  - Any number of lifts can be present
+Problem statement:
 
-API contract:
-  - LiftManager-summon_lift/2: Summon the lift specifying if we want to go up or down and which floor we are on
-  - Lift-go_to/1: Specify which floor to travel to
-  - Lift-cancel_command/1: Specify command to cancel
+  - Design and implement an elevator system to manage all the elevators in a
+    building, to minimise the average time taken by an user to travel from their
+    present floor to their desired floor.
+      - Elevators can be added, removed, or temporarily down for maintenance.
 
-Lift states:
-  - Stationery
-  - Going to
-  - At
 
 Classes:
+
+  - LiftManager (Singleton class)
+    - id: Unique identifier
+
   - Lift
+    - id: Unique identifier
+    - instructionList: Sorted lists of instructions the lift is going to follow
+
+  - Instruction
+    - id: Unique identifier
+    - name: Human readable name for an instruction
+    - subInstructionList: Sorted list of instructions to follow to serve
+      this instruction (Note: This helps build instructions recursively.
+      Moreover, this will be empty if an instruction has no sub instructions).
+
+API contract:
+
   - LiftManager
+    - summon-lift/3: Summon the lift specifying:
+      1) current floor
+      2) direction to travel in
+      3) set of lifts to choose from
+    - cancel-summon-lift/3: Cancel command to summon the lift specifying:
+      1) current floor
+      2) direction to travel in
+      3) set of lifts to choose from
+
+  - Lift
+    - go-to/1: Specify which floor to travel to
+      1) destination floor
+    - cancel-command/1: Specify cancelation of request to travel to particular
+      floor
+      1) canceled destination floor
