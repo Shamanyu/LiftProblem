@@ -13,7 +13,8 @@ Classes:
 
   - Lift
     - id: Unique identifier
-    - instructionList: Sorted lists of instructions the lift is going to follow
+    - instructionList: Sorted lists of orthogonal instructions the lift is going
+      to follow
 
   - Instruction
     - id: Unique identifier
