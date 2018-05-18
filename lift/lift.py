@@ -24,6 +24,7 @@ class lift(object):
 
   def  __str__(self):
     return "\nLIFT STATE\n" + \
+      "Name: " + self.name + "\n" + \
       "Current instruction id: " + str(self.current_instruction_id) + "\n" + \
       "Up travel time: " + str(self.up_travel_time) + "\n" + \
       "Down travel time: " + str(self.down_travel_time) + "\n" + \
